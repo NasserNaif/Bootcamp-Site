@@ -1,0 +1,23 @@
+
+
+.App {
+  /* text-align: center; */
+  background-color: #e1eaf5;
+}
+
+.copyright{
+  margin-left: 7px;
+}
+
+.list{
+  cursor: pointer;
+}
+.list:hover{
+  color: #e1eaf5;
+}
+
+
+
+
+
+
