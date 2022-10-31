@@ -1,13 +1,20 @@
 import "./App.css";
+import React, { useState } from "react";
 import Data from "./data";
 import Nav from "./componants/Nav";
 import Cards from "./componants/Cards";
 import Footer from "./componants/Footer";
-import { Box, Grid, GridItem } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
 import SignIn from "./componants/SignIn";
 function App() {
+  const [user, setUser] = useState({
+    username: "",
+    password: "",
+    isLogIn: false,
+  });
+
   const data = Data;
-  let logiin = false;
+
   const CardsElm = data.map((elm) => (
     <Cards
       key={elm.id}
@@ -18,6 +25,17 @@ function App() {
       end={elm.end}
     />
   ));
+
+  const bnt = () => {
+    if (user.username.length === 0 || user.password.length === 0) {
+      alert("Error");
+    } else {
+      setUser((prev) => ({
+        ...prev,
+        isLogIn: true,
+      }));
+    }
+  };
 
   return (
     <div className="App">
@@ -35,8 +53,29 @@ function App() {
             gap={20}
             justifyContent={"center"}
           >
-            <SignIn isSignIn={true ? (logiin = true) : (logiin = false)} />
-            {/* {CardsElm} */}
+            {user.isLogIn ? (
+              CardsElm
+            ) : (
+              <SignIn
+                changeUsername={(e) => {
+                  setUser((prev) => {
+                    return {
+                      ...prev,
+                      username: e.target.value,
+                    };
+                  });
+                }}
+                changePassword={(e) => {
+                  setUser((prev) => {
+                    return {
+                      ...prev,
+                      password: e.target.value,
+                    };
+                  });
+                }}
+                btnOnclick={() => bnt()}
+              />
+            )}
           </Grid>
         </GridItem>
 
