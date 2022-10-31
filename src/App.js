@@ -3,10 +3,11 @@ import Data from "./data";
 import Nav from "./componants/Nav";
 import Cards from "./componants/Cards";
 import Footer from "./componants/Footer";
-import { Grid, GridItem, Image } from "@chakra-ui/react";
+import { Box, Grid, GridItem } from "@chakra-ui/react";
+import SignIn from "./componants/SignIn";
 function App() {
   const data = Data;
-
+  let logiin = false;
   const CardsElm = data.map((elm) => (
     <Cards
       key={elm.id}
@@ -17,6 +18,7 @@ function App() {
       end={elm.end}
     />
   ));
+
   return (
     <div className="App">
       <Grid
@@ -30,9 +32,11 @@ function App() {
         <GridItem colSpan={2} m={4}>
           <Grid
             templateColumns={"repeat(2,auto)"}
-            gap={20}            justifyContent={"center"}
+            gap={20}
+            justifyContent={"center"}
           >
-            {CardsElm}
+            <SignIn isSignIn={true ? (logiin = true) : (logiin = false)} />
+            {/* {CardsElm} */}
           </Grid>
         </GridItem>
 
