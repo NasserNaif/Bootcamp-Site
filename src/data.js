@@ -48,7 +48,7 @@ const Data = [
     isAvalibale: false,
   },
   {
-    id: 1,
+    id: 7,
     title: "JavaScript Bootcamp",
     image: "IMG/JavaScript.png",
     start: "15/10/2022",
@@ -56,7 +56,7 @@ const Data = [
     isAvalibale: false,
   },
   {
-    id: 2,
+    id: 8,
     title: "C# Bootcamp",
     image: "IMG/csharp.png",
     start: "15/10/2022",
@@ -64,7 +64,7 @@ const Data = [
     isAvalibale: true,
   },
   {
-    id: 3,
+    id: 9,
     title: "Swift Bootcamp",
     image: "IMG/swift.png",
     start: "15/10/2022",

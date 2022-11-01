@@ -1,10 +1,9 @@
 import React from "react";
 import { Box, Image, Input, Button } from "@chakra-ui/react";
 
-
 import { AiOutlineSearch } from "react-icons/ai";
 
-function Nav() {
+function Nav(props) {
   return (
     <Box
       display={"flex"}
@@ -28,7 +27,13 @@ function Nav() {
         <p>Bootcamps</p>
       </Box>
       <Box display={"flex"}>
-        <Input width={"13.9rem"} bg={""} placeholder={"Search Bootacamps"} color={"#000024"}/>
+        <Input
+          onChange={props.searchFunc}
+          width={"13.9rem"}
+          bg={""}
+          placeholder={"Search Bootacamps"}
+          color={"#000024"}
+        />
         <Button colorScheme={"green"}>
           <AiOutlineSearch />
         </Button>

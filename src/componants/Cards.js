@@ -12,7 +12,7 @@ function Cards(props) {
       gap={2}
       boxShadow={"lg"}
       borderRadius={15}
-      maxW={"350px"}
+      
     >
       <Image src={props.img} maxW={90} borderRadius={"15px"} />
       <Box
@@ -32,6 +32,7 @@ function Cards(props) {
           bg={props.isAvb ? "green.400" : "gray.500"}
           w={"70%"}
           _hover={{ bg: props.isAvb ? "green.600" : "gray.300" }}
+          onClick={props.clickSearch}
         >
           {props.isAvb ? "Enroll Now" : "Sorry closed"}
         </Button>

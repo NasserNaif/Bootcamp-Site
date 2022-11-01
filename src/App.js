@@ -12,19 +12,15 @@ function App() {
     password: "",
     isLogIn: false,
   });
+  const [search, setSearch] = useState("");
 
   const data = Data;
 
-  const CardsElm = data.map((elm) => (
-    <Cards
-      key={elm.id}
-      img={elm.image}
-      title={elm.title}
-      isAvb={elm.isAvalibale}
-      start={elm.start}
-      end={elm.end}
-    />
-  ));
+  // const filterSearch = () => {
+  //   setData((prev) => {
+  //     prev.filter((elm) => elm.title.toLowerCase().includes(search));
+  //   });
+  // };
 
   const bnt = () => {
     if (user.username.length === 0 || user.password.length === 0) {
@@ -37,6 +33,19 @@ function App() {
     }
   };
 
+  const CardsElm = data
+    .filter((filt) => filt.title.toLocaleLowerCase().includes(search))
+    .map((elm) => (
+      <Cards
+        key={elm.id}
+        img={elm.image}
+        title={elm.title}
+        isAvb={elm.isAvalibale}
+        start={elm.start}
+        end={elm.end}
+      />
+    ));
+
   return (
     <div className="App">
       <Grid
@@ -45,7 +54,10 @@ function App() {
         templateRows={"repeat(4,auto)"}
       >
         <GridItem colSpan={2}>
-          <Nav />
+          <Nav
+            searchFunc={(e) => setSearch(e.target.value)}
+            // clickSearch={() => filterSearch()}
+          />
         </GridItem>
         <GridItem colSpan={2} m={4}>
           <Grid
