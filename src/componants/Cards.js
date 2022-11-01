@@ -4,7 +4,7 @@ import { Box, Image, Button, Text } from "@chakra-ui/react";
 function Cards(props) {
   return (
     <Box
-      bg={"white"}
+      bg={"rgba(255,255,255,0.3)"}
       p={3}
       display={"flex"}
       alignItems={"center"}
