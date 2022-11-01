@@ -13,16 +13,9 @@ function App() {
     isLogIn: false,
   });
   const [search, setSearch] = useState("");
-
   const data = Data;
 
-  // const filterSearch = () => {
-  //   setData((prev) => {
-  //     prev.filter((elm) => elm.title.toLowerCase().includes(search));
-  //   });
-  // };
-
-  const bnt = () => {
+  const btnSignIn = () => {
     if (user.username.length === 0 || user.password.length === 0) {
       alert("Error");
     } else {
@@ -34,7 +27,11 @@ function App() {
   };
 
   const CardsElm = data
-    .filter((filt) => filt.title.toLocaleLowerCase().includes(search))
+    .filter(
+      (filt) =>
+        filt.title.toLocaleLowerCase().includes(search) ||
+        filt.title.toLocaleUpperCase().includes(search)
+    )
     .map((elm) => (
       <Cards
         key={elm.id}
@@ -54,10 +51,7 @@ function App() {
         templateRows={"repeat(4,auto)"}
       >
         <GridItem colSpan={2}>
-          <Nav
-            searchFunc={(e) => setSearch(e.target.value)}
-            // clickSearch={() => filterSearch()}
-          />
+          <Nav searchFunc={(e) => setSearch(e.target.value)} />
         </GridItem>
         <GridItem colSpan={2} m={4}>
           <Grid
@@ -85,13 +79,13 @@ function App() {
                     };
                   });
                 }}
-                btnOnclick={() => bnt()}
+                btnOnclick={() => btnSignIn()}
               />
             )}
           </Grid>
         </GridItem>
 
-        <GridItem colSpan={2}>
+        <GridItem colSpan={2} gridRow={4}>
           <Footer />
         </GridItem>
       </Grid>

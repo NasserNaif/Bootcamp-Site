@@ -41,7 +41,6 @@ function Footer() {
         alignItems={"flex-end"}
         fontSize={"21px"}
       >
-        {/* copyright */}
         <AiOutlineCopyright />
       </Box>
 
